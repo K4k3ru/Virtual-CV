@@ -1,0 +1,706 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5;
+    color: #ffffff;
+    background: #111827; /* Slightly lighter dark background */
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Stars and aurora effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* More stars - first layer */
+        radial-gradient(1px 1px at 5% 5%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+        radial-gradient(1px 1px at 10% 10%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+        radial-gradient(1px 1px at 15% 15%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(1px 1px at 20% 20%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(2px 2px at 25% 25%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+        radial-gradient(2px 2px at 30% 30%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+        radial-gradient(1px 1px at 35% 35%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(1px 1px at 40% 40%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(2px 2px at 45% 45%, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
+        radial-gradient(2px 2px at 50% 50%, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
+        /* More stars - second layer */
+        radial-gradient(1px 1px at 55% 55%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(1px 1px at 60% 60%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(2px 2px at 65% 65%, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
+        radial-gradient(2px 2px at 70% 70%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+        radial-gradient(1px 1px at 75% 75%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(1px 1px at 80% 80%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(2px 2px at 85% 85%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+        radial-gradient(1px 1px at 90% 90%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+        radial-gradient(1px 1px at 95% 95%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        /* Additional scattered stars */
+        radial-gradient(1px 1px at 15% 35%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(2px 2px at 25% 75%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+        radial-gradient(1px 1px at 35% 95%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(2px 2px at 45% 15%, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
+        radial-gradient(1px 1px at 55% 25%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(2px 2px at 65% 45%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+        radial-gradient(1px 1px at 75% 65%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        radial-gradient(2px 2px at 85% 5%, rgba(255, 255, 255, 0.9) 50%, transparent 100%),
+        radial-gradient(1px 1px at 95% 55%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+        /* Brighter stars */
+        radial-gradient(2px 2px at 7% 42%, rgba(255, 255, 255, 1) 50%, transparent 100%),
+        radial-gradient(2px 2px at 22% 58%, rgba(255, 255, 255, 1) 50%, transparent 100%),
+        radial-gradient(2px 2px at 37% 22%, rgba(255, 255, 255, 1) 50%, transparent 100%),
+        radial-gradient(2px 2px at 52% 88%, rgba(255, 255, 255, 1) 50%, transparent 100%),
+        radial-gradient(2px 2px at 67% 33%, rgba(255, 255, 255, 1) 50%, transparent 100%),
+        radial-gradient(2px 2px at 82% 77%, rgba(255, 255, 255, 1) 50%, transparent 100%),
+        radial-gradient(2px 2px at 97% 12%, rgba(255, 255, 255, 1) 50%, transparent 100%),
+        /* Aurora effect */
+        linear-gradient(90deg, transparent 0%, rgba(76, 209, 55, 0.1) 30%, rgba(45, 206, 255, 0.2) 50%, rgba(159, 0, 198, 0.1) 70%, transparent 100%) 0 0 / 200% 100%,
+        radial-gradient(circle at 60% 30%, rgba(76, 209, 55, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 30% 70%, rgba(45, 206, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 60%, rgba(159, 0, 198, 0.15) 0%, transparent 50%);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.8;
+    animation: aurora 15s linear infinite, pulse 8s ease-in-out infinite alternate, twinkle 4s infinite alternate;
+}
+
+@keyframes aurora {
+    0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 200% 0%, 20% 20%, -20% -20%, 10% 10%; }
+    100% { background-position: 10% 10%, 20% 20%, 30% 30%, 40% 40%, 50% 50%, 60% 60%, 70% 70%, 80% 80%, 90% 90%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.6; }
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+nav {
+    background-color: rgba(10, 25, 47, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.profile-section {
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 100%;
+}
+
+.profile-container {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    background: rgba(10, 25, 47, 0.4); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.5);
+}
+
+/* Enhanced profile image styling to fit with space background */
+.profile-image {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-inline-start: 1rem;
+    box-shadow: 0 0 25px rgba(100, 200, 255, 0.2); /* Subtle cosmic blue glow */
+    animation: subtle-pulse 4s ease-in-out infinite alternate;
+}
+
+/* Move the overlay to a lower z-index */
+.profile-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(45, 206, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(159, 0, 198, 0.15) 0%, transparent 50%);
+    border-radius: 50%;
+    z-index: 1; /* Lower z-index to allow mask to work properly */
+    opacity: 0.8;
+    mix-blend-mode: screen;
+    animation: rotate-glow 15s linear infinite;
+    pointer-events: none;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 0;
+    transition: transform 0.5s ease;
+    /* Enhanced mask with better browser support */
+    mask-image: radial-gradient(
+        circle,
+        black 45%, 
+        rgba(0, 0, 0, 0.9) 55%,
+        rgba(0, 0, 0, 0.75) 65%,
+        rgba(0, 0, 0, 0.5) 75%,
+        rgba(0, 0, 0, 0.25) 85%,
+        transparent 95%
+    );
+    -webkit-mask-image: radial-gradient(
+        circle,
+        black 45%, 
+        rgba(0, 0, 0, 0.9) 55%,
+        rgba(0, 0, 0, 0.75) 65%,
+        rgba(0, 0, 0, 0.5) 75%,
+        rgba(0, 0, 0, 0.25) 85%,
+        transparent 95%
+    );
+}
+
+.profile-image:hover img {
+    transform: scale(1.1);
+}
+
+.profile-image::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.profile-image:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@keyframes subtle-pulse {
+    0% { box-shadow: 0 0 25px rgba(100, 200, 255, 0.2); }
+    50% { box-shadow: 0 0 35px rgba(76, 209, 55, 0.2); }
+    100% { box-shadow: 0 0 25px rgba(159, 0, 198, 0.2); }
+}
+
+@keyframes rotate-glow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.profile-content {
+    flex: 1;
+}
+
+.profile-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.profile-content h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.profile-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.social-links {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.social-links a i {
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+}
+
+social-links a:hover {
+    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.social-links a:hover i {
+    font-size: 1.4rem;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 0.5rem;
+    font-size: small;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    margin-top: 2rem;
+}
+
+.section-container {
+    max-width: 100%;
+    margin: 2rem 0rem;
+}
+
+.education-section {
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 100%;
+}
+
+.education-container {
+    background: rgba(10, 25, 47, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.5);
+}
+
+.education-entry {
+    display: flex;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.education-entry:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.education-info {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.education-details {
+    flex: 2;
+}
+
+.education-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.education-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #a8c0ff;
+}
+
+.education-date {
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+.achievements {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
+.achievements li {
+    margin-bottom: 0.5rem;
+    color: #e0e0e0;
+}
+
+/* Common glass container style for all content containers */
+.glass-container {
+    background: rgba(10, 25, 47, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.5);
+}
+
+/* Unified section styling */
+.profile-section,
+.education-section,
+.experience-section,
+.certificates-section {
+    padding: 0rem 2rem;
+    margin: 2rem 0;
+}
+
+/* Section title styling */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .education-entry {
+        flex-direction: column;
+    }
+    
+    .education-info {
+        padding-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+.experience-section {
+    padding: 2rem -1rem;
+    margin: 2rem auto; 
+}
+
+.experience-container {
+    background: rgba(10, 25, 47, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.5);
+}
+
+.experience-entry {
+    display: flex;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.experience-entry:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.experience-info {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.experience-details {
+    flex: 2;
+}
+
+.experience-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.experience-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #a8c0ff;
+}
+
+.experience-date {
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+.responsibilities {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
+.responsibilities li {
+    margin-bottom: 0.5rem;
+    color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .experience-entry {
+        flex-direction: column;
+    }
+    
+    .experience-info {
+        padding-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Certificate Section Styles */
+.certificates-section {
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 15px;
+    padding: 2rem -1rem;
+    margin: 2rem auto;
+    max-width: 100%;
+}
+
+.certificates-container {
+    background: rgba(10, 25, 47, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.5);
+}
+
+.certificate-entry {
+    display: flex;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important; 
+}
+
+.certificate-entry:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.certificate-info {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.certificate-details {
+    flex: 2;
+}
+
+.certificate-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.certificate-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #a8c0ff;
+}
+
+.certificate-date {
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+/* Certificate image container styling */
+.certificate-image-container {
+    margin-top: 1rem;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Override the previous declaration in the page for certificate image container */
+.certificate-slider .certificate-image-container {
+    width: 100%;
+    max-width: 800px; /* Increased from 600px */
+    margin: 1.5rem auto 0;
+}
+
+.certificate-image-container:hover {
+    transform: translateY(-5px);
+}
+
+.certificate-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.certificate-image:hover {
+    transform: scale(1.02);
+}
+
+/* Responsive design for certificates */
+@media (max-width: 768px) {
+    .certificate-entry {
+        flex-direction: column;
+    }
+    
+    .certificate-info {
+        padding-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .certificate-image-container {
+        margin-top: 1.5rem;
+    }
+}
+
+/* Certificate slider navigation */
+.certificate-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+}
+
+.nav-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+#certificate-counter {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.certificate-slider {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.certificate-entry {
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.certificate-entry.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 0.5s ease forwards;
+    width: 100%;
+    max-width: 900px; /* Increased max-width */
+    margin-bottom: 2rem !important;
+    padding-bottom: 2rem !important;
+    border-bottom: none !important; /* Remove the border line */
+}
+
+.certificate-info {
+    text-align: center;
+    padding-right: 0;
+    margin-bottom: 0;
+}
+
+.certificate-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.certificate-image-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+}
+
+@media (max-width: 768px) {
+    .certificate-entry.active {
+        padding: 0 1rem;
+    }
+    
+    .certificate-image-container {
+        width: 100%;
+    }
+}
+
+.certificate-entry.active {
+    display: flex;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

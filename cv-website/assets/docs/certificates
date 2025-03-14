@@ -1,0 +1,16 @@
+cv-website
+├── src
+│   ├── index.html
+│   ├── css
+│   │   └── styles.css
+│   ├── js
+│   │   └── main.js
+│   └── sections
+│       ├── profile.html
+│       ├── education.html
+│       ├── experience.html
+│       └── certificates.html
+├── assets
+│   └── docs
+│       └── certificates
+└── README.md
