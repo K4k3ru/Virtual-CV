@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-padding-top: 15px; /* Adjust based on your header height */
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.5;
@@ -101,13 +106,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background: rgba(10, 25, 47, 0.7);
+    padding: 0.6rem 2rem;
+    background: rgba(10, 25, 47, 0.4);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -369,6 +374,10 @@ footer {
 .section-container {
     max-width: 100%;
     margin: 2rem 0rem;
+}
+
+section[id] {
+    scroll-margin-top: 80px; /* Match the scroll-padding-top value */
 }
 
 .education-section {
