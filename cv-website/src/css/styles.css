@@ -24,6 +24,8 @@ body {
     flex-direction: column;
     position: relative;
     overflow-x: hidden;
+    font-size: 16px; /* Base font size */
+    line-height: 1.6;
 }
 
 /* Stars and aurora effect */
@@ -126,7 +128,7 @@ header {
 }
 
 .logo-text {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
     font-weight: bold;
     background: linear-gradient(90deg, #a8c0ff, #7a9aff, #45caff);
     -webkit-background-clip: text;
@@ -165,6 +167,7 @@ nav a {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     transition: all 0.3s ease;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
 }
 
 nav a:hover {
@@ -243,6 +246,31 @@ nav a.active i {
         margin-right: 4px;
         font-size: 0.8em;
     }
+}
+
+/* Better mobile header with smoother transitions */
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    transition: height 0.3s ease;
+  }
+  
+  /* Optional: Create a mobile menu button if needed */
+  .mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* For very small screens, adjust logo text */
+  @media (max-width: 350px) {
+    .logo-text {
+      font-size: 1.2rem;
+    }
+  }
 }
 
 .profile-section {
@@ -496,7 +524,7 @@ section[id] {
 }
 
 .education-date {
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
     color: #e0e0e0;
     margin-bottom: 1rem;
 }
@@ -534,7 +562,7 @@ section[id] {
 /* Section title styling */
 .section-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
     margin-bottom: 2rem;
     color: #ffffff;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -602,7 +630,7 @@ section[id] {
 }
 
 .experience-date {
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
     color: #e0e0e0;
     margin-bottom: 1rem;
 }
@@ -683,7 +711,7 @@ section[id] {
 }
 
 .certificate-date {
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
     color: #e0e0e0;
     margin-bottom: 1rem;
 }
@@ -913,6 +941,7 @@ section[id] {
     display: block;
     margin-bottom: 0.5rem;
     color: #a8c0ff;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
 }
 
 .form-group input,
@@ -1061,7 +1090,7 @@ section[id] {
 }
 
 .section-title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
     text-align: center;
     margin-bottom: 3rem;
     background: linear-gradient(90deg, #a8c0ff, #7a9aff);
@@ -1086,7 +1115,7 @@ section[id] {
 }
 
 .category-title {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
     margin-bottom: 1.5rem;
     color: #a8c0ff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1188,7 +1217,7 @@ section[id] {
 }
 
 .soft-skill-item span {
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     color: #e0e0e0;
     white-space: nowrap;
 }
@@ -1196,5 +1225,290 @@ section[id] {
 @media (max-width: 768px) {
     .soft-skills-grid {
         justify-content: center;
+    }
+}
+
+/* Mobile optimization improvements */
+
+/* Better viewport handling */
+@viewport {
+  width: device-width;
+  zoom: 1;
+}
+
+/* Profile section responsiveness */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .profile-image {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+  }
+  
+  .profile-content h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .profile-content h2 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
+
+/* Improved mobile navigation */
+@media (max-width: 768px) {
+  nav ul {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  nav a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+  }
+  
+  nav a i {
+    margin-right: 4px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Better section spacing for mobile */
+@media (max-width: 768px) {
+  .section-container {
+    margin: 1rem 0;
+  }
+  
+  .education-section,
+  .experience-section,
+  .skills-section,
+  .certificates-section,
+  .contact-section {
+    padding: 1rem;
+  }
+  
+  .education-container,
+  .experience-container,
+  .skills-container,
+  .certificates-container,
+  .contact-container {
+    padding: 1rem;
+  }
+}
+
+/* Adjust skills display on very small screens */
+@media (max-width: 400px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skill-item {
+    flex-wrap: nowrap;
+  }
+  
+  .soft-skill-item {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .soft-skills-grid {
+    justify-content: flex-start;
+  }
+}
+
+/* Improve contact form on mobile */
+@media (max-width: 768px) {
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px; /* Prevents zoom on input focus on iOS */
+    padding: 0.7rem;
+  }
+  
+  .contact-form {
+    padding: 1rem;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 0.8rem;
+  }
+}
+
+/* Fix certificate navigation on small screens */
+@media (max-width: 400px) {
+  .certificate-navigation {
+    gap: 1rem;
+  }
+  
+  #certificate-counter {
+    min-width: 60px;
+    text-align: center;
+  }
+}
+
+/* Add touch-friendly targets */
+@media (max-width: 768px) {
+  .nav-button,
+  .submit-btn,
+  .skill-icon,
+  .popup-close {
+    min-height: 44px; /* Apple's recommended minimum touch target size */
+    min-width: 44px;
+  }
+}
+
+/* Fix font sizes for better readability */
+@media (max-width: 768px) {
+  .category-title {
+    font-size: 1.3rem;
+  }
+  
+  .education-info h3,
+  .experience-info h3,
+  .certificate-info h3 {
+    font-size: 1.3rem;
+  }
+  
+  .education-info h4,
+  .experience-info h4 {
+    font-size: 1.1rem;
+  }
+  
+  .section-title {
+    font-size: 1.7rem;
+  }
+}
+
+/* Fix custom popup for mobile */
+@media (max-width: 768px) {
+  .popup-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .popup-message {
+    font-size: 1.1rem;
+  }
+}
+
+/* Text size adjustments for better readability */
+
+/* Base font size adjustments */
+body {
+    font-size: 16px; /* Base font size */
+    line-height: 1.6;
+}
+
+/* Responsive typography */
+h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+h3 {
+    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+}
+
+h4 {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+}
+
+p, .skill-item span, .soft-skill-item span {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
+/* Improve header text */
+.logo-text {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+}
+
+/* Navigation text size */
+nav a {
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+}
+
+/* Certificate and section titles */
+.section-title {
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+}
+
+.category-title {
+    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+}
+
+/* Dates and small text */
+.education-date,
+.experience-date,
+.certificate-date {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
+
+/* Form elements */
+.form-group label {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+/* Specific mobile adjustments */
+@media (max-width: 480px) {
+    /* Increase padding for better touch targets */
+    nav a {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Make skill names more readable */
+    .skill-info h4 {
+        font-size: 0.95rem;
+    }
+    
+    /* Make soft skills text not wrap if possible */
+    .soft-skill-item {
+        padding: 0.5rem 0.8rem;
+    }
+    
+    .soft-skill-item span {
+        font-size: 0.85rem;
+    }
+    
+    /* Better spacing in text-heavy areas */
+    .profile-description,
+    .education-details p,
+    .experience-details p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    /* Popup text */
+    .popup-message {
+        font-size: 1rem;
+    }
+}
+
+/* Specific adjustments for very small screens */
+@media (max-width: 350px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .nav-button i {
+        font-size: 0.9rem;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem;
     }
 }
