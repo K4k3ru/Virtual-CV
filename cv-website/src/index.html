@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyle Chua</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
-    <!-- Your existing stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -19,7 +17,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="#about-me"><i class="fas fa-user"></i> About Me</a></li>
                 <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
                 <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
                 <li><a href="#skills"><i class="fas fa-code-branch"></i> Skills</a></li>
@@ -30,18 +28,58 @@
     </header>
 
     <main>
-        <section id="profile" class="profile-section">
+        <section id="intro" class="intro-section">
+            <div class="intro-container">
+                <div class="intro-content">
+                    <div class="intro-greeting">Hello, I'm</div>
+                    <h1 class="intro-name">Kyle Justin Chua</h1>
+                    <h2 class="intro-title">Web Developer & Computer Science Graduate</h2>
+                    <div class="intro-description">
+                        <p>Specializing in full-stack web development with PHP, MySQL, C++ and C#</p>
+                    </div>
+                    <div class="intro-cta">
+                        <a href="#about-me" class="intro-button">
+                            About Me <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="intro-button outline">
+                            Contact Me <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="intro-decoration">
+                    <div class="code-block">
+                        <span class="code-comment">// Welcome to my portfolio</span>
+                        <span class="code-keyword">function</span> <span class="code-function">developSolutions</span>() {
+                        <span class="code-return">  return {
+                            skills: ["PHP", "MySQL", "C++", "C#"],
+                            passion: "Building efficient web applications",
+                            goal: "Creating solutions that make a difference"
+                          };</span>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <a href="#about-me">
+                    <span class="mouse">
+                        <span class="mouse-wheel"></span>
+                    </span>
+                    <span class="scroll-text">Scroll Down</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="about-me" class="about-me-section">
             <div class="profile-container">
                 <div class="profile-image">
                     <img src="Avatar.jpg" alt="Professional Photo">
                 </div>
                 <div class="profile-content">
-                    <h1>Kyle Justin Chua</h1>
-                    <h2>Computer Science</h2>
+                    <h1>About me</h1>
                     <p class="profile-description">
-                        I am a 22-year-old Computer Science student at Computer Communication Development Institute based in Sorsogon City with intermediate skills in PHP, C++, C#, 
-                        and have experience in Python and Java. I completed my Senior High School (STEM) and Junior High School education at St. Luise de Marillac College of Sorsogon. 
-                        I developed the Faculty Evaluation System at my current institution, demonstrating my ability to apply programming concepts to create practical solutions.
+                        At 22 years of age, I recently graduated with a degree in computer science. 
+                        My specialization lies in web development, with a strong emphasis on PHP and MySQL, 
+                        and I have intermediate knowledge of C++ and C#. Furthermore, I have knowledge of Python and Java. A significant project I developed was the CCDI Faculty Evaluation System. This initiative aimed to streamline the institution's assessment processes, ultimately resulting in improved administrative efficiency. My approach combines technical proficiency with a focus on practical problem-solving to deliver effective software solutions.
                     </p>
                     <div class="social-links">
                         <a href="https://github.com/K4k3ru" target="_blank"><i class="fab fa-github"></i></a>
@@ -57,22 +95,20 @@
         <section id="education" class="education-section">
             <div class="section-container">
                 <div class="education-container">
-                    <!-- College education -->
                     <div class="education-entry">
                         <div class="education-info">
                             <h3>Bachelor of Science in Computer Science</h3>
                             <h4>Computer Communication Development Institute</h4>
-                            <p class="education-date">2021 - Present</p>
+                            <p class="education-date">2021 - 2025</p>
                         </div>
                         <div class="education-details">
                             <p>Relevant coursework: Data Structures and Algorithms, Database Systems, Computer Networks, Object-Oriented Programming, Software Engineering.</p>
                             <ul class="achievements">
-                                <li>Developed Faculty Evaluation System</li>
+                                <li>Full-stack Developer of Faculty Evaluation System</li>
                             </ul>
                         </div>
                     </div>
                     
-                    <!-- High School education -->
                     <div class="education-entry">
                         <div class="education-info">
                             <h3>Senior High School (STEM)</h3>
@@ -87,7 +123,6 @@
                         </div>
                     </div>
                     
-                    <!-- Junior High School education -->
                     <div class="education-entry">
                         <div class="education-info">
                             <h3>Junior High School</h3>
@@ -101,7 +136,6 @@
                         </div>
                     </div>
                     
-                    <!-- Elementary School education -->
                     <div class="education-entry">
                         <div class="education-info">
                             <h3>Elementary Education</h3>
@@ -121,7 +155,6 @@
         <section id="experience" class="experience-section">
             <div class="section-container">
                 <div class="experience-container">
-                    <!-- DICT Internship -->
                     <div class="experience-entry">
                         <div class="experience-info">
                             <h3>Intern</h3>
@@ -131,8 +164,8 @@
                         <div class="experience-details">
                             <p>Gained practical experience in government ICT operations and digital transformation initiatives.</p>
                             <ul class="responsibilities">
-                                <li>Assisted with technical support</li>
-                                <li>Installed and Configured the Starlink sattelite internet in the area of Donsol, Gubat, and Magallanes.</li>
+                                <li>Technical Assistance and Implementation Support – DICT Free Wi-Fi for All Program
+                                    Provided technical assistance in the implementation of the DICT Free Wi-Fi for All Program, aligned with the government's Free Public Internet Access Program. Responsibilities included the provision of assistance on the installation and deployment of Starlink satellite internet systems in key municipalities such as Gubat, Donsol, and Magallanes, ensuring reliable connectivity for public access</li>
                                 <li>Passed the ICT Poficiency Diagnostic Examamination 2025.</li>
                                 <li>Serve as resourse speaker during the digital literacy training on The Basics of Mobile Robotics 101 using Felta Car at Department of Information Communications Technology.</li>
                             </ul>
@@ -145,54 +178,6 @@
         <section id="skills" class="skills-section">
             <div class="section-container">
                 <div class="skills-container">
-                    <!-- Soft Skills -->
-                    <div class="skill-category">
-                        <h3 class="category-title">Soft Skills</h3>
-                        <div class="soft-skills-grid">
-                            <div class="soft-skill-item">
-                                <div class="skill-icon"><i class="fas fa-user-check"></i></div>
-                                <span>Dependable and Responsible</span>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="skill-icon"><i class="fas fa-tasks"></i></div>
-                                <span>Multitasking Abilities</span>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="skill-icon"><i class="fas fa-balance-scale"></i></div>
-                                <span>Calm Under Pressure</span>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="skill-icon"><i class="fas fa-headphones"></i></div>
-                                <span>Active Listener</span>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="skill-icon"><i class="fas fa-laptop"></i></div>
-                                <span>Computer Skills</span>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="skill-icon"><i class="fas fa-exchange-alt"></i></div>
-                                <span>Flexible and Adaptable</span>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="skill-icon"><i class="far fa-clock"></i></div>
-                                <span>Time Management</span>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="skill-icon"><i class="fas fa-check-circle"></i></div>
-                                <span>Decision-making</span>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="skill-icon"><i class="far fa-smile"></i></div>
-                                <span>Friendly, Positive Attitude</span>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="skill-icon"><i class="fas fa-puzzle-piece"></i></div>
-                                <span>Problem-solving</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Programming Languages -->
                     <div class="skill-category">
                         <h3 class="category-title">Programming Languages</h3>
                         <div class="skills-grid">
@@ -248,7 +233,6 @@
                         </div>
                     </div>
                     
-                    <!-- Web Development -->
                     <div class="skill-category">
                         <h3 class="category-title">Web Development</h3>
                         <div class="skills-grid">
@@ -284,7 +268,6 @@
                         </div>
                     </div>
                     
-                    <!-- Other Skills -->
                     <div class="skill-category">
                         <h3 class="category-title">Other Skills</h3>
                         <div class="skills-grid">
@@ -310,7 +293,6 @@
                         </div>
                     </div>
 
-                    <!-- Technical Skills -->
                     <div class="skill-category">
                         <h3 class="category-title">Technical Skills</h3>
                         <div class="skills-grid">
@@ -365,6 +347,51 @@
                             </div>
                         </div>
                     </div>
+                    <div class="skill-category">
+                        <h3 class="category-title">Soft Skills</h3>
+                        <div class="soft-skills-grid">
+                            <div class="soft-skill-item">
+                                <div class="skill-icon"><i class="fas fa-user-check"></i></div>
+                                <span>Dependable and Responsible</span>
+                            </div>
+                            <div class="soft-skill-item">
+                                <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+                                <span>Multitasking Abilities</span>
+                            </div>
+                            <div class="soft-skill-item">
+                                <div class="skill-icon"><i class="fas fa-balance-scale"></i></div>
+                                <span>Calm Under Pressure</span>
+                            </div>
+                            <div class="soft-skill-item">
+                                <div class="skill-icon"><i class="fas fa-headphones"></i></div>
+                                <span>Active Listener</span>
+                            </div>
+                            <div class="soft-skill-item">
+                                <div class="skill-icon"><i class="fas fa-laptop"></i></div>
+                                <span>Computer Skills</span>
+                            </div>
+                            <div class="soft-skill-item">
+                                <div class="skill-icon"><i class="fas fa-exchange-alt"></i></div>
+                                <span>Flexible and Adaptable</span>
+                            </div>
+                            <div class="soft-skill-item">
+                                <div class="skill-icon"><i class="far fa-clock"></i></div>
+                                <span>Time Management</span>
+                            </div>
+                            <div class="soft-skill-item">
+                                <div class="skill-icon"><i class="fas fa-check-circle"></i></div>
+                                <span>Decision-making</span>
+                            </div>
+                            <div class="soft-skill-item">
+                                <div class="skill-icon"><i class="far fa-smile"></i></div>
+                                <span>Friendly, Positive Attitude</span>
+                            </div>
+                            <div class="soft-skill-item">
+                                <div class="skill-icon"><i class="fas fa-puzzle-piece"></i></div>
+                                <span>Problem-solving</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -372,62 +399,46 @@
         <section id="certificates" class="certificates-section">
             <div class="section-container">
                 <div class="certificates-container">
-                    <div class="certificate-slider">
-                        <!-- All certificate entries will be in this container -->
-                        <div class="certificate-entry active" data-index="0">
+                    <div class="certificates-grid">
+                        <div class="certificate-tile">
                             <div class="certificate-info">
-                                <h3>Computer Hadware Basics</h3>
+                                <h3>Computer Hardware Basics</h3>
                                 <p class="certificate-date">2025</p>
                             </div>
-                            <div class="certificate-details">
-                                <div class="certificate-image-container">
-                                    <img src="Computer_Hardware_Basics.png" alt="Web Development Certificate" class="certificate-image">
-                                </div>
+                            <div class="certificate-image-container">
+                                <img src="Computer_Hardware_Basics.png" alt="Web Development Certificate" class="certificate-image">
                             </div>
                         </div>
                         
-                        <div class="certificate-entry" data-index="1">
+                        <div class="certificate-tile">
                             <div class="certificate-info">
                                 <h3>Ethical Hacker</h3>
                                 <p class="certificate-date">2025</p>
                             </div>
-                            <div class="certificate-details">
-                                <div class="certificate-image-container">
-                                    <img src="Ethical_Hacker.png" alt="Ethical Hacker" class="certificate-image">
-                                </div>
+                            <div class="certificate-image-container">
+                                <img src="Ethical_Hacker.png" alt="Ethical Hacker" class="certificate-image">
                             </div>
                         </div>
                         
-                        <div class="certificate-entry" data-index="2">
+                        <div class="certificate-tile">
                             <div class="certificate-info">
                                 <h3>Python Essentials 1</h3>
                                 <p class="certificate-date">2025</p>
                             </div>
-                            <div class="certificate-details">
-                                <div class="certificate-image-container">
-                                    <img src="Python_Essentials_1.png" alt="Python Essentials 1" class="certificate-image">
-                                </div>
+                            <div class="certificate-image-container">
+                                <img src="Python_Essentials_1.png" alt="Python Essentials 1" class="certificate-image">
                             </div>
                         </div>
 
-                        <!-- Add this new certificate entry -->
-                        <div class="certificate-entry" data-index="3">
+                        <div class="certificate-tile">
                             <div class="certificate-info">
                                 <h3>Mobile Robotics</h3>
                                 <p class="certificate-date">2025</p>
                             </div>
-                            <div class="certificate-details">
-                                <div class="certificate-image-container">
-                                    <img src="Robotics.png" alt="Mobile Robotics Certificate" class="certificate-image">
-                                </div>
+                            <div class="certificate-image-container">
+                                <img src="Robotics.png" alt="Mobile Robotics Certificate" class="certificate-image">
                             </div>
                         </div>
-                    </div>
-
-                    <div class="certificate-navigation">
-                        <button id="prev-certificate" class="nav-button"><i class="fas fa-chevron-left"></i></button>
-                        <span id="certificate-counter">1 / 4</span>
-                        <button id="next-certificate" class="nav-button"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -483,7 +494,6 @@
             </div>
         </section>
 
-        <!-- Custom popup message -->
         <div id="custom-popup" class="custom-popup">
             <div class="popup-content">
                 <div class="popup-icon">
@@ -493,13 +503,20 @@
                 <button id="popup-close" class="popup-close">OK</button>
             </div>
         </div>
+
+        <div id="certificate-modal" class="certificate-modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <h3 id="modal-certificate-title" class="modal-title"></h3>
+                <img id="modal-certificate-image" class="modal-image" src="" alt="Certificate">
+            </div>
+        </div>
     </main>
 
-    <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
        (function() {
-          emailjs.init("RtbaOlWyT7ZFSXSF8"); // Add your public key here
+          emailjs.init("RtbaOlWyT7ZFSXSF8");
        })();
     </script>
     <script src="js/main.js"></script>
