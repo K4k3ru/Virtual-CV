@@ -37,6 +37,70 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Typing effect for intro greeting
+    const typingElement = document.getElementById('typing-text');
+    const textToType = "Hello, I'm";
+    let charIndex = 0;
+    
+    if (typingElement) {
+        // Clear any existing content
+        typingElement.innerHTML = '';
+        
+        // Create typing cursor
+        const cursor = document.createElement('span');
+        cursor.classList.add('typing-cursor');
+        
+        // Type each character with delay
+        function typeNextChar() {
+            if (charIndex < textToType.length) {
+                typingElement.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeNextChar, 100); // Adjust speed here (lower = faster)
+            } else {
+                // Add blinking cursor at the end
+                typingElement.appendChild(cursor);
+            }
+        }
+        
+        // Start typing with a small initial delay
+        setTimeout(typeNextChar, 500);
+    }
+
+    // Faster code block typing effect
+    const codeElement = document.getElementById('typing-code');
+    
+    if (codeElement) {
+        // Store the original HTML content
+        const originalContent = codeElement.innerHTML;
+        
+        // Clear the code block
+        codeElement.innerHTML = '';
+        
+        // Add cursor
+        const cursor = document.createElement('span');
+        cursor.classList.add('typing-cursor-code');
+        codeElement.appendChild(cursor);
+        
+        // For a simpler approach that works better with complex HTML
+        let currentDisplayedHTML = '';
+        let fullHTML = originalContent;
+        let i = 0;
+        
+        // Faster typing speed - reduced from 30ms to 10ms
+        const typeInterval = setInterval(() => {
+            if (i < fullHTML.length) {
+                // Process multiple characters at once for even faster typing
+                const charsToAdd = Math.min(3, fullHTML.length - i); // Add 3 chars at once for speed
+                currentDisplayedHTML += fullHTML.substring(i, i + charsToAdd);
+                codeElement.innerHTML = currentDisplayedHTML;
+                codeElement.appendChild(cursor);
+                i += charsToAdd;
+            } else {
+                clearInterval(typeInterval);
+            }
+        }, 20); // Reduced delay from 30ms to 10ms
+    }
+
     // Setup Intersection Observer for section animations
     const observerOptions = {
         root: null,
@@ -164,6 +228,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         }
     }
+
+    // Set up capstone modal close functionality
+    const capstoneModal = document.getElementById('capstone-modal');
+    const capstoneModalClose = capstoneModal ? capstoneModal.querySelector('.modal-close') : null;
+    
+    if (capstoneModalClose) {
+        capstoneModalClose.addEventListener('click', function() {
+            closeCapstoneModal();
+        });
+    }
+    
+    if (capstoneModal) {
+        capstoneModal.addEventListener('click', function(e) {
+            if (e.target === capstoneModal) {
+                closeCapstoneModal();
+            }
+        });
+    }
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && capstoneModal && capstoneModal.classList.contains('active')) {
+            closeCapstoneModal();
+        }
+    });
 
     // Automatic section scrolling
     let isScrolling = false;
@@ -417,5 +505,36 @@ function animateContact(section) {
     
     if (contactForm) {
         contactForm.classList.add('animate', 'animate--fadeInRight', 'delay-200');
+    }
+}
+
+// Capstone modal functionality
+function openCapstoneModal(element) {
+    const modal = document.getElementById('capstone-modal');
+    const modalImage = document.getElementById('modal-capstone-image');
+    const modalTitle = document.getElementById('modal-capstone-title');
+    const img = element.querySelector('.collage-image');
+    
+    if (img && img.src) {
+        modalImage.src = img.src;
+        modalImage.alt = img.alt;
+        modalTitle.textContent = img.alt;
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeCapstoneModal() {
+    const modal = document.getElementById('capstone-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        setTimeout(() => {
+            if (!modal.classList.contains('active')) {
+                document.getElementById('modal-capstone-image').src = '';
+            }
+        }, 300);
     }
 }
