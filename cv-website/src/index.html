@@ -9,6 +9,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Bigger experience logo */
+        .experience-logo {
+            object-fit: contain;
+            margin: 0.5rem 0;
+            border-radius: 6px;
+            filter: drop-shadow(0 0 8px rgba(45, 206, 255, 0.3));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        /* Add a subtle hover effect */
+        .experience-logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 12px rgba(45, 206, 255, 0.5));
+        }
+
+        /* Make sure the container can accommodate the bigger logo */
+        .experience-org {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .experience-logo {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        /* Add this to your CSS styles */
+        .experience-details p {
+            text-align: left;
+            max-width: 800px;
+            margin-left: 0; /* Override any auto margins */
+            margin-right: auto;
+            padding-left: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,6 +60,7 @@
                 <li><a href="#about-me"><i class="fas fa-user"></i> About Me</a></li>
                 <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
                 <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="#capstone"><i class="fas fa-project-diagram"></i> Capstone</a></li>
                 <li><a href="#skills"><i class="fas fa-code-branch"></i> Skills</a></li>
                 <li><a href="#certificates"><i class="fas fa-certificate"></i> Certificates</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
@@ -31,7 +72,7 @@
         <section id="intro" class="intro-section">
             <div class="intro-container">
                 <div class="intro-content">
-                    <div class="intro-greeting">Hello, I'm</div>
+                    <div class="intro-greeting" id="typing-text"></div>
                     <h1 class="intro-name">Kyle Justin Chua</h1>
                     <h2 class="intro-title">Web Developer & Computer Science Graduate</h2>
                     <div class="intro-description">
@@ -47,7 +88,7 @@
                     </div>
                 </div>
                 <div class="intro-decoration">
-                    <div class="code-block">
+                    <div class="code-block" id="typing-code">
                         <span class="code-comment">// Welcome to my portfolio</span>
                         <span class="code-keyword">function</span> <span class="code-function">developSolutions</span>() {
                         <span class="code-return">  return {
@@ -157,9 +198,11 @@
                 <div class="experience-container">
                     <div class="experience-entry">
                         <div class="experience-info">
-                            <h3>Intern</h3>
-                            <h4>Department of Information and Communications Technology (DICT)</h4>
-                            <p class="experience-date">2025</p>
+                            
+                            <div class="experience-org">
+                                <img src="DICT-Logo.png" alt="DICT Logo" class="experience-logo">
+                            </div>
+                            <h3>Internship (2025)</h3>
                         </div>
                         <div class="experience-details">
                             <p>Gained practical experience in government ICT operations and digital transformation initiatives.</p>
@@ -169,6 +212,71 @@
                                 <li>Passed the ICT Poficiency Diagnostic Examamination 2025.</li>
                                 <li>Serve as resourse speaker during the digital literacy training on The Basics of Mobile Robotics 101 using Felta Car at Department of Information Communications Technology.</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="capstone" class="capstone-section">
+            <div class="section-container">
+                <div class="capstone-container">
+                    <div class="capstone-content">
+                        <div class="capstone-info">
+                            <div class="capstone-title-container">
+                                <h3>Faculty Evaluation System</h3>
+                                <span class="capstone-year">2025</span>
+                            </div>
+                            <p class="capstone-description">
+                                A comprehensive web-based system designed to streamline the evaluation process for faculty members at Computer Communication Development Institute. This system automates the collection, analysis, and reporting of faculty performance data, significantly improving administrative efficiency.
+                            </p>
+
+                            <div class="capstone-details">
+                                <div class="capstone-technologies">
+                                    <h4>Technologies Used</h4>
+                                    <div class="tech-tags">
+                                        <span class="tech-tag">PHP</span>
+                                        <span class="tech-tag">MySQL</span>
+                                        <span class="tech-tag">HTML/CSS</span>
+                                    </div>
+                                </div>
+
+                                <div class="capstone-features">
+                                    <h4>Key Features</h4>
+                                    <ul>
+                                        <li>User authentication and role-based access control</li>
+                                        <li>Dynamic evaluation forms with customizable criteria</li>
+                                        <li>Real-time data analysis and visualization</li>
+                                        <li>Automated reporting and feedback generation</li>
+                                        <li>Secure data storage and privacy protection</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="capstone-showcase">
+                            <div class="capstone-image-collage">
+                                <div class="collage-item" onclick="openCapstoneModal(this)">
+                                    <img src="capstone-login.png" alt="Faculty Evaluation System - Login" class="collage-image">
+                                </div>
+                                <div class="collage-item" onclick="openCapstoneModal(this)">
+                                    <img src="capstone-dashboard.png" alt="Faculty Evaluation System - Dashboard" class="collage-image">
+                                </div>
+                                <div class="collage-item" onclick="openCapstoneModal(this)">
+                                    <img src="capstone-form.png" alt="Faculty Evaluation System - Evaluation Form" class="collage-image">
+                                </div>
+                                <div class="collage-item" onclick="openCapstoneModal(this)">
+                                    <img src="capstone-reports.png" alt="Faculty Evaluation System - Reports" class="collage-image">
+                                </div>
+                                <div class="collage-item" onclick="openCapstoneModal(this)">
+                                    <img src="capstone-reports-1.png" alt="Faculty Evaluation System - Reports" class="collage-image">
+                                </div>
+                                <div class="collage-item" onclick="openCapstoneModal(this)">
+                                    <img src="capstone-reports-2.png" alt="Faculty Evaluation System - Reports" class="collage-image">
+                                </div>
+                            </div>
+                            <div class="capstone-links">
+                                <a href="https://faculty-evaluation.ccdisorsogon.edu.ph/" class="capstone-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> CCDI Faculty Evaluation</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -432,11 +540,20 @@
 
                         <div class="certificate-tile">
                             <div class="certificate-info">
-                                <h3>Mobile Robotics</h3>
+                                <h3>Basic Mobile Robotics</h3>
                                 <p class="certificate-date">2025</p>
                             </div>
                             <div class="certificate-image-container">
                                 <img src="Robotics.png" alt="Mobile Robotics Certificate" class="certificate-image">
+                            </div>
+                        </div>
+                        <div class="certificate-tile">
+                            <div class="certificate-info">
+                                <h3>Data Analytics Essentials</h3>
+                                <p class="certificate-date">2025</p>
+                            </div>
+                            <div class="certificate-image-container">
+                                <img src="Data_Analytics.png" alt="Data Analytics Certificate" class="certificate-image">
                             </div>
                         </div>
                     </div>
@@ -509,6 +626,14 @@
                 <span class="modal-close">&times;</span>
                 <h3 id="modal-certificate-title" class="modal-title"></h3>
                 <img id="modal-certificate-image" class="modal-image" src="" alt="Certificate">
+            </div>
+        </div>
+
+        <div id="capstone-modal" class="certificate-modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <h3 id="modal-capstone-title" class="modal-title"></h3>
+                <img id="modal-capstone-image" class="modal-image" src="" alt="Capstone Screenshot">
             </div>
         </div>
     </main>
