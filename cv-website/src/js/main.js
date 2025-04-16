@@ -37,6 +37,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Make logo scrollable to top
+    const logoLink = document.querySelector('.logo-link');
+    
+    if (logoLink) {
+        logoLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
     // Typing effect for intro greeting
     const typingElement = document.getElementById('typing-text');
     const textToType = "Hello, I'm";
@@ -66,39 +80,49 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeNextChar, 500);
     }
 
-    // Faster code block typing effect
+    // Looping code block typing effect
     const codeElement = document.getElementById('typing-code');
     
     if (codeElement) {
         // Store the original HTML content
         const originalContent = codeElement.innerHTML;
         
-        // Clear the code block
-        codeElement.innerHTML = '';
+        function startTypingAnimation() {
+            // Clear the code block
+            codeElement.innerHTML = '';
+            
+            // Add cursor
+            const cursor = document.createElement('span');
+            cursor.classList.add('typing-cursor-code');
+            codeElement.appendChild(cursor);
+            
+            // For a simpler approach that works better with complex HTML
+            let currentDisplayedHTML = '';
+            let fullHTML = originalContent;
+            let i = 0;
+            
+            // Faster typing speed - reduced from 30ms to 10ms
+            const typeInterval = setInterval(() => {
+                if (i < fullHTML.length) {
+                    // Process multiple characters at once for even faster typing
+                    const charsToAdd = Math.min(3, fullHTML.length - i); // Add 3 chars at once for speed
+                    currentDisplayedHTML += fullHTML.substring(i, i + charsToAdd);
+                    codeElement.innerHTML = currentDisplayedHTML;
+                    codeElement.appendChild(cursor);
+                    i += charsToAdd;
+                } else {
+                    clearInterval(typeInterval);
+                    
+                    // Wait 8 seconds and then restart the animation
+                    setTimeout(() => {
+                        startTypingAnimation();
+                    }, 8000);
+                }
+            }, 20); // Typing speed
+        }
         
-        // Add cursor
-        const cursor = document.createElement('span');
-        cursor.classList.add('typing-cursor-code');
-        codeElement.appendChild(cursor);
-        
-        // For a simpler approach that works better with complex HTML
-        let currentDisplayedHTML = '';
-        let fullHTML = originalContent;
-        let i = 0;
-        
-        // Faster typing speed - reduced from 30ms to 10ms
-        const typeInterval = setInterval(() => {
-            if (i < fullHTML.length) {
-                // Process multiple characters at once for even faster typing
-                const charsToAdd = Math.min(3, fullHTML.length - i); // Add 3 chars at once for speed
-                currentDisplayedHTML += fullHTML.substring(i, i + charsToAdd);
-                codeElement.innerHTML = currentDisplayedHTML;
-                codeElement.appendChild(cursor);
-                i += charsToAdd;
-            } else {
-                clearInterval(typeInterval);
-            }
-        }, 20); // Reduced delay from 30ms to 10ms
+        // Start the initial animation
+        startTypingAnimation();
     }
 
     // Setup Intersection Observer for section animations
