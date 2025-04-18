@@ -488,11 +488,33 @@ section[id] {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.5);
 }
+.education-info h3 {
+    font-size: clamp(1.2rem, 3vh, 1.8rem);
+    margin-bottom: 0.5vh;
+}
 
+.education-info h4 {
+    font-size: clamp(1rem, 2.5vh, 1.5rem);
+    margin-bottom: 0.5vh;
+}
+
+.education-date {
+    font-size: clamp(0.8rem, 2vh, 1.1rem);
+}
+
+.education-details p {
+    font-size: clamp(0.9rem, 2.2vh, 1.2rem);
+    line-height: 1.4;
+    margin-bottom: 1vh;
+}
+
+.achievements li {
+    font-size: clamp(0.9rem, 2vh, 1.1rem);
+    line-height: 1.4;
+}
 .education-entry {
     display: flex;
     margin-bottom: 2rem;
-    padding-bottom: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -665,18 +687,12 @@ section[id] {
     width: 400px;
     height: 230px;
     object-fit: contain;
-    
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 15px rgba(168, 192, 255, 0.4);
     transition: all 0.3s ease;
     padding: 15px;
-    background: rgba(255, 255, 255, 0.3);
 }
 
 .experience-logo:hover {
-    border-color: #a8c0ff;
-    box-shadow: 0 0 20px rgba(122, 154, 255, 0.6);
-    background: rgba(255, 255, 255, 0.6);
+
     transform: scale(1.02);
 }
 
