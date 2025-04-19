@@ -313,97 +313,68 @@ nav a.active i {
     box-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.5);
 }
 
-/* Enhanced profile image styling to fit with space background */
+/* Add fade effect to profile image bottom */
 .profile-image {
     position: relative;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-inline-start: 1rem;
-    box-shadow: 0 0 25px rgba(100, 200, 255, 0.2); /* Subtle cosmic blue glow */
-    animation: subtle-pulse 4s ease-in-out infinite alternate;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    overflow: visible;
+    margin: 0;
+    padding: 1rem;
 }
 
-/* Move the overlay to a lower z-index */
 .profile-image::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 30% 70%, rgba(45, 206, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 70% 30%, rgba(159, 0, 198, 0.15) 0%, transparent 50%);
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    background: radial-gradient(circle at 30% 40%, rgba(76, 209, 55, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, rgba(45, 206, 255, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 50% 50%, rgba(159, 0, 198, 0.1) 0%, transparent 70%);
     border-radius: 50%;
-    z-index: 1; /* Lower z-index to allow mask to work properly */
-    opacity: 0.8;
-    mix-blend-mode: screen;
-    animation: rotate-glow 15s linear infinite;
-    pointer-events: none;
+    z-index: -1;
+    filter: blur(15px);
 }
 
 .profile-image img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
+    width: auto;
+    max-width: 80%;
+    height: auto;
+    max-height: 500px;
+    margin: 0 auto;
+    object-fit: contain;
+    transition: transform 0.5s ease, filter 0.3s ease;
     position: relative;
-    z-index: 0;
-    transition: transform 0.5s ease;
-    /* Enhanced mask with better browser support */
-    mask-image: radial-gradient(
-        circle,
-        black 45%, 
-        rgba(0, 0, 0, 0.9) 55%,
-        rgba(0, 0, 0, 0.75) 65%,
-        rgba(0, 0, 0, 0.5) 75%,
-        rgba(0, 0, 0, 0.25) 85%,
-        transparent 95%
-    );
-    -webkit-mask-image: radial-gradient(
-        circle,
-        black 45%, 
-        rgba(0, 0, 0, 0.9) 55%,
-        rgba(0, 0, 0, 0.75) 65%,
-        rgba(0, 0, 0, 0.5) 75%,
-        rgba(0, 0, 0, 0.25) 85%,
-        transparent 95%
-    );
+    -webkit-mask-image: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 1) 75%, 
+        rgba(0, 0, 0, 0.7) 85%,
+        rgba(0, 0, 0, 0.5) 90%,
+        rgba(0, 0, 0, 0.1) 95%,
+        rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 1) 75%, 
+        rgba(0, 0, 0, 0.7) 85%,
+        rgba(0, 0, 0, 0.5) 90%,
+        rgba(0, 0, 0, 0.1) 95%,
+        rgba(0, 0, 0, 0) 100%);
 }
 
-.profile-image:hover img {
-    transform: scale(1.1);
+/* Simple hover effect without continuous animation */
+.profile-image img:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 20px rgba(45, 206, 255, 0.4));
 }
 
-.profile-image::after {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    border-radius: 50%;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    z-index: 1;
-    opacity: 0;
-    transform: scale(1.1);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.profile-image:hover::after {
-    opacity: 1;
-    transform: scale(1);
-}
-
-@keyframes subtle-pulse {
-    0% { box-shadow: 0 0 25px rgba(100, 200, 255, 0.2); }
-    50% { box-shadow: 0 0 35px rgba(76, 209, 55, 0.2); }
-    100% { box-shadow: 0 0 25px rgba(159, 0, 198, 0.2); }
-}
-
-@keyframes rotate-glow {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.profile-content, 
+.profile-image {
+    flex: 1;
+    width: 50%;
+    max-width: 50%;
 }
 
 .profile-content {
