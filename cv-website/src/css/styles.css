@@ -1337,6 +1337,7 @@ section[id] {
   .skills-section,
   .certificates-section,
   .contact-section,
+  .engagement-section,
   .capstone-section {
     padding: 1rem;
   }
@@ -1346,6 +1347,7 @@ section[id] {
   .skills-container,
   .certificates-container,
   .contact-container,
+  .engagement-container,
   .capstone-container {
     padding: 1rem;
   }
@@ -2271,5 +2273,114 @@ nav a {
     .capstone-links {
         flex-direction: column;
         align-items: center;
+    }
+}
+
+/* Updated Engagement Section Styles to match Certificate style */
+.engagement-section {
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 15px;
+    padding: 2rem -1rem;
+    margin: 2rem;
+    max-width: 100%;
+}
+
+.engagement-container {
+    background: rgba(10, 25, 47, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2rem;
+    min-height: 85vh;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Engagement grid styling similar to certificates grid */
+.engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.engagement-tile {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.engagement-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(122, 154, 255, 0.2);
+    border-color: rgba(168, 192, 255, 0.3);
+}
+
+.engagement-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.engagement-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.engagement-tile:hover .engagement-image img {
+    transform: scale(1.05);
+}
+
+.engagement-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.engagement-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    background: linear-gradient(90deg, #fff, #45caff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.engagement-date {
+    font-size: 0.85rem;
+    color: #64ffda;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.engagement-content p {
+    color: #a8b2d1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .engagement-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .engagement-grid {
+        grid-template-columns: 1fr;
     }
 }
