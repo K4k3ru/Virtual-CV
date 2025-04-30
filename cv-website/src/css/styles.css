@@ -2371,6 +2371,10 @@ nav a {
     line-height: 1.6;
 }
 
+.descrip{
+    text-align: justify;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .engagement-grid {
