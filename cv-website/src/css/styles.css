@@ -2388,3 +2388,26 @@ nav a {
         grid-template-columns: 1fr;
     }
 }
+
+/* Add this to your existing CSS */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-image {
+        order: -1; /* This moves the image to the top */
+        margin-bottom: 2rem;
+        align-self: center;
+    }
+    
+    .profile-content {
+        order: 1; /* This keeps the content below the image */
+    }
+    
+    .profile-image img {
+        max-width: 200px; /* Optional: make image smaller on mobile */
+        width: 100%;
+    }
+}
