@@ -367,6 +367,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Visitor Counter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Get current visit count from localStorage
+    let visitCount = localStorage.getItem('visitCount');
+    
+    // If no count exists, start from 0
+    if (!visitCount) {
+        visitCount = 0;
+    }
+    
+    // Increment the count
+    visitCount = parseInt(visitCount) + 1;
+    
+    // Store the new count
+    localStorage.setItem('visitCount', visitCount);
+    
+    // Display the count
+    const visitCountElement = document.getElementById('visit-count');
+    if (visitCountElement) {
+        visitCountElement.textContent = visitCount.toLocaleString();
+    }
+});
+
 function showCustomPopup(message, type = 'success') {
     const popup = document.getElementById('custom-popup');
     const popupMessage = document.querySelector('.popup-message');

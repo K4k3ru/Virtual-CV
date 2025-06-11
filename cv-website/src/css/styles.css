@@ -2411,3 +2411,26 @@ nav a {
         width: 100%;
     }
 }
+/* Visitor Counter Styles */
+.visitor-counter {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(45, 206, 255, 0.2);
+}
+
+.counter-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #2dceff;
+    font-size: 0.9rem;
+}
+
+.counter-item i {
+    font-size: 1rem;
+}
+
+#visit-count {
+    font-weight: bold;
+    color: #fff;
+}
